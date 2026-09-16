@@ -1,0 +1,11 @@
+# Built at runtime from data/parquet/ — never commit
+data/*.duckdb
+data/*.duckdb.wal
+data/.build-*
+
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+.idea/
+.vscode/

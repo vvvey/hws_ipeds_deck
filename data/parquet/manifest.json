@@ -1,0 +1,73 @@
+{
+ "hd": {
+  "columns": [
+   "unitid",
+   "institution_name",
+   "state",
+   "sector",
+   "control",
+   "carnegie_basic",
+   "size_category",
+   "longitude",
+   "latitude",
+   "year"
+  ],
+  "rows": 162442
+ },
+ "ef_a": {
+  "columns": [
+   "unitid",
+   "efalevel",
+   "eftotlt",
+   "year"
+  ],
+  "rows": 2944297
+ },
+ "ef_c": {
+  "columns": [
+   "unitid",
+   "efcstate",
+   "efres01",
+   "year"
+  ],
+  "rows": 1426858
+ },
+ "efia": {
+  "columns": [
+   "unitid",
+   "efteug",
+   "eftegd",
+   "fteug",
+   "ftegd",
+   "year"
+  ],
+  "rows": 160590
+ },
+ "f2": {
+  "columns": [
+   "unitid",
+   "f2b02",
+   "f2d01",
+   "f2d02",
+   "f2d03",
+   "f2d04",
+   "f2d05",
+   "f2d06",
+   "f2d07",
+   "f2d08",
+   "f2d09",
+   "f2d11",
+   "f2d12",
+   "f2d13",
+   "f2d14",
+   "f2d15",
+   "f2h01",
+   "f2h02",
+   "f2h03a",
+   "f2h03b",
+   "f2h03c",
+   "year"
+  ],
+  "rows": 44704
+ }
+}

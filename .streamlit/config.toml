@@ -1,0 +1,159 @@
+# Streamlit theme — Hobart and William Smith Colleges brand standards
+# Source: https://www.hws.edu/offices/communications/brand-standards/toolkit.aspx
+#
+#   Purple  Pantone 2607 C  #510C76  rgb(81,12,118)
+#   Green   Pantone 349 C   #006937  rgb(0,105,55)
+#   Orange  Pantone 165 C   #F26724  rgb(242,103,36)
+#
+# Type: Cera Pro (body/UI), Cera Stencil Pro (display only). Cera Pro is served
+# to every viewer from app/static/ — see the [[theme.fontFaces]] blocks at the
+# bottom. The Helvetica entries in the font stacks below are now only a
+# last-resort fallback for the moment before the webfont loads (or if it fails),
+# which is the toolkit's named substitute anyway.
+#
+# Chart palettes live in app/core/theme.py as well (the Plotly template) — the
+# two must stay in sync. They were validated for colorblind separation,
+# lightness band, chroma floor, and surface contrast before being adopted.
+
+[theme]
+base = "light"
+
+# --- Color -----------------------------------------------------------------
+primaryColor = "#006937"              # HWS green — widgets, accents, focus
+backgroundColor = "#FCFCFB"           # warm white page surface
+secondaryBackgroundColor = "#E7F3EA"  # green tint 10% — cards, code, tables
+textColor = "#0E1B12"                 # near-black with a green cast
+linkColor = "#006937"
+linkUnderline = true
+borderColor = "#CDE1D2"               # green tint 20%
+dataframeBorderColor = "#CDE1D2"
+dataframeHeaderBackgroundColor = "#E7F3EA"
+codeBackgroundColor = "#E7F3EA"
+codeTextColor = "#006937"
+
+# Semantic accents remapped onto the brand's three primaries + tonal steps
+greenColor = "#006937"
+orangeColor = "#F26724"
+violetColor = "#510C76"
+blueColor = "#2D74CA"
+redColor = "#A81F26"
+yellowColor = "#B8961A"
+grayColor = "#52514E"
+
+# --- Typography ------------------------------------------------------------
+# Cera Pro first; Helvetica per the toolkit's substitution rule.
+font = "Cera Pro, Helvetica Neue, Helvetica, Arial, sans-serif"
+# Cera Stencil Pro is display-only in the brand standards, so headings stay on
+# Cera Pro here; swap the first family below if you want stencil headlines.
+headingFont = "Cera Pro, Helvetica Neue, Helvetica, Arial, sans-serif"
+codeFont = "SF Mono, Menlo, Consolas, monospace"
+baseFontSize = 16
+headingFontWeights = [700, 600, 600, 600, 600, 600]
+
+# --- Shape -----------------------------------------------------------------
+# The brand's layout language is rectangular frames with hard white borders,
+# so corners stay square and widgets keep a visible edge.
+baseRadius = "none"
+buttonRadius = "none"
+showWidgetBorder = true
+showSidebarBorder = true
+
+# --- Charts ----------------------------------------------------------------
+# Applied to Plotly, Altair and Vega-Lite. Mirrors app/core/theme.py.
+# Categorical: fixed order, never cycled; cap scatter/bubble at the first four.
+chartCategoricalColors = [
+  "#7A2DA9",  # purple (HWS purple, chart-legible tint)
+  "#006937",  # green  (HWS green)
+  "#F26724",  # orange (HWS orange)
+  "#009E98",  # teal
+  "#2D74CA",  # blue
+  "#E7729B",  # pink
+  "#CFAF1D",  # gold
+  "#C2272D",  # crimson
+]
+# Sequential (magnitude): one hue — HWS green, light -> dark
+chartSequentialColors = [
+  "#7EC495", "#57B97B", "#19A75D", "#008F4D", "#00783F", "#006032", "#004A25",
+]
+# Diverging (polarity): HWS orange <-> neutral gray <-> HWS green
+chartDivergingColors = [
+  "#F26724", "#FD9A73", "#FFC9B3", "#E8E8E6", "#BCE3C7", "#84CA9A", "#006D39",
+]
+
+[theme.sidebar]
+backgroundColor = "#E7F3EA"
+secondaryBackgroundColor = "#FCFCFB"
+borderColor = "#CDE1D2"
+
+# --- Licensed Cera Pro ------------------------------------------------------
+# The app SERVES the font rather than hoping the viewer has it installed: the
+# five faces below are in app/static/ as .woff2 and are delivered by Streamlit's
+# static file server (server.enableStaticServing, at the bottom of this file).
+# Without these blocks the `font` stack above silently falls back to Helvetica
+# for anyone whose machine lacks a local Cera Pro — which is every machine HWS
+# IT does not manage.
+#
+# Faces are limited to the seven the UI actually asks for — Cera Pro
+# regular/medium/bold plus regular and bold italic, and the two Cera Stencil Pro
+# display weights — roughly 395 KB total. Cera Pro Thin, Light and Black are
+# licensed and installed on managed Macs but unused here, so shipping them would
+# be dead weight on every page load.
+#
+# Regenerate from the managed desktop fonts with:
+#   python -c "from fontTools.ttLib import TTFont; f=TTFont(SRC); \
+#              f.flavor='woff2'; f.save(DEST)"    # needs fonttools + brotli
+#
+# NOTE: these are converted from the MDM-deployed desktop fonts. A desktop
+# license does not automatically grant webfont embedding rights, and serving
+# them here makes them downloadable by every viewer. Confirm the HWS Cera
+# license covers web use before deploying this beyond localhost.
+
+[[theme.fontFaces]]
+family = "Cera Pro"
+url = "app/static/CeraPro-Regular.woff2"
+weight = 400
+style = "normal"
+
+[[theme.fontFaces]]
+family = "Cera Pro"
+url = "app/static/CeraPro-Italic.woff2"
+weight = 400
+style = "italic"
+
+[[theme.fontFaces]]
+family = "Cera Pro"
+url = "app/static/CeraPro-Medium.woff2"
+weight = 500
+style = "normal"
+
+[[theme.fontFaces]]
+family = "Cera Pro"
+url = "app/static/CeraPro-Bold.woff2"
+weight = 700
+style = "normal"
+
+[[theme.fontFaces]]
+family = "Cera Pro"
+url = "app/static/CeraPro-BoldItalic.woff2"
+weight = 700
+style = "italic"
+
+# Cera Stencil Pro — display only. The toolkit: "intended for use as a display
+# face (headlines), and for titles and selected graphic 'callouts.' It should
+# not be used for body copy." Used here for deck factoid values (a graphic
+# callout) and nothing else; Bold and Black are the only weights the brand
+# publishes, so there is no regular or italic to declare.
+[[theme.fontFaces]]
+family = "Cera Stencil Pro"
+url = "app/static/CeraStencilPro-Bold.woff2"
+weight = 700
+style = "normal"
+
+[[theme.fontFaces]]
+family = "Cera Stencil Pro"
+url = "app/static/CeraStencilPro-Black.woff2"
+weight = 900
+style = "normal"
+
+[server]
+enableStaticServing = true
